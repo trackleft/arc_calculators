@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.arc_gpa_calculator_block
+    - field.field.block_content.arc_gpa_calculator_block.field_arc_block_header
+  module:
+    - text
+id: block_content.arc_gpa_calculator_block.default
+targetEntityType: block_content
+bundle: arc_gpa_calculator_block
+mode: default
+content:
+  field_arc_block_header:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

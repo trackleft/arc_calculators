@@ -1,0 +1,27 @@
+calculator_styles:
+  version: 1.x
+  css:
+    theme:
+      css/arc-calc.css: {}
+  dependencies:
+    - az_barrio/arizona-bootstrap
+
+gpa_calculator_js:
+  version: 1.x
+  js:
+    js/arc-calc-gpa.js: {}
+  dependencies:
+    - arc_calculators/calculator_styles
+    - core/drupal
+    - core/jquery
+    - core/once
+
+target_gpa_calculator_js:
+  version: 1.x
+  js:
+    js/arc-calc-target-gpa.js: {}
+  dependencies:
+    - arc_calculators/calculator_styles
+    - core/drupal
+    - core/jquery
+    - core/once

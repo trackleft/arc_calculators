@@ -1,0 +1,8 @@
+name: 'Advising Resource Center Calculators'
+description: 'Provides blocks for a GPA Calculator and a Target GPA Calculator.'
+type: module
+core_version_requirement: ^9 || ^10
+package: The University of Arizona
+dependencies:
+  - drupal:block
+  - drupal:block_content

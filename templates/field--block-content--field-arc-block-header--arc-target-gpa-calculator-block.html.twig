@@ -1,0 +1,16 @@
+{#
+/**
+ * @file
+ * Theme override to display a Target GPA Calculator block header field.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% include 'field--text-with-summary.html.twig' %}
+
+{% block content %}
+  {{ attach_library('arc_calculators/calculator_styles') }}
+  {{ attach_library('arc_calculators/target_gpa_calculator_js') }}
+  <div id='target-gpa-calculator'></div>
+{% endblock %}
