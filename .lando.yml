@@ -33,7 +33,7 @@ services:
     build:
       # Create a new quickstart project and use the arc_calculators module as a non-packagist repository.
       - git clone https://github.com/az-digital/az-quickstart-scaffolding.git /app
-      - composer config repositories.localdev path /usr/local/arc_calculators && composer require --no-update az-digital/arc_calculators:\*@dev
+      - composer config repositories.localdev path /usr/local/arc_calculators && composer require --no-update uaz-web/arc_calculators:\*@dev
       - composer install
 tooling:
   # Provide a command to install Drupal.

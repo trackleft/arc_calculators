@@ -1,6 +1,6 @@
 {
-  "name": "az-digital/arc_calculators",
-  "description": "Composer project template for custom Quickstart module.",
+  "name": "uaz-web/arc_calculators",
+  "description": "Composer project for ARC Calculators module.",
   "type": "drupal-custom-module",
   "require": {
       "drupal/core": "^9"
