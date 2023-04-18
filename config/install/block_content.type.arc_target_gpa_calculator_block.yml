@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: arc_target_gpa_calculator_block
+label: 'Target GPA Calculator Block'
+revision: 1
+description: 'Add the Target GPA Calculator to a page.'

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.arc_target_gpa_calculator_block
+    - field.storage.block_content.field_arc_block_header
+  module:
+    - text
+id: block_content.arc_target_gpa_calculator_block.field_arc_block_header
+field_name: field_arc_block_header
+entity_type: block_content
+bundle: arc_target_gpa_calculator_block
+label: 'Block Header'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

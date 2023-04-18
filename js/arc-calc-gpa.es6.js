@@ -68,8 +68,9 @@
         courseCreditInput.setCustomValidity('');
       }
       if (courseGradeInput.value && courseCreditInput.value) {
-        totalUnits += courseCreditInput.value;
-        totalGradePoints += courseCreditInput.value * courseGradeInput.value;
+        totalUnits += Number(courseCreditInput.value);
+        totalGradePoints +=
+          Number(courseCreditInput.value) * courseGradeInput.value;
       }
     });
 
@@ -82,13 +83,13 @@
       tableBody.firstChild
         .getElementsByClassName('grade-field')[0]
         .setCustomValidity(
-          'Enter the grade and credits earned for at least one course.',
+          'Enter the grade and units of credit for at least one course.',
         );
     } else {
       tableBody.firstChild
         .getElementsByClassName('credit-field')[0]
         .setCustomValidity(
-          'Enter the grade and credits earned for at least one course.',
+          'Enter the grade and units of credit for at least one course.',
         );
     }
 
@@ -125,58 +126,58 @@
         addRowButton.innerText = 'Add Row';
         frag.appendChild(addRowButton);
 
-        const gpaCalcForm = document.createElement('form');
-        gpaCalcForm.setAttribute(
+        const calcForm = document.createElement('form');
+        calcForm.setAttribute(
           'onsubmit',
           'event.preventDefault(); return false;',
         );
 
-        const gpaCalcTable = document.createElement('table');
-        gpaCalcTable.id = 'gpa-calculator-table';
-        gpaCalcTable.className = 'table table-striped border-bottom';
+        const calcTable = document.createElement('table');
+        calcTable.id = 'gpa-calculator-table';
+        calcTable.className = 'table table-striped border-bottom';
 
-        const gpaCalcTHead = document.createElement('thead');
-        gpaCalcTHead.className = 'thead-dark';
-        const gpaCalcTHeadTR = document.createElement('tr');
-        gpaCalcTHeadTR.innerHTML =
-          "<th scope='col'>#</th><th scope='col' class='col-6'>Course Name</th><th scope='col'>Grade</th><th scope='col' class='col-2 col-md-3'>Credits Earned</th>";
-        gpaCalcTHead.appendChild(gpaCalcTHeadTR);
-        gpaCalcTable.appendChild(gpaCalcTHead);
+        const calcTHead = document.createElement('thead');
+        calcTHead.className = 'thead-dark';
+        const calcTHeadTR = document.createElement('tr');
+        calcTHeadTR.innerHTML =
+          "<th scope='col'>#</th><th scope='col' class='col-6'>Course Name</th><th scope='col'>Grade</th><th scope='col' class='col-2 col-md-3'>Units of Credit</th>";
+        calcTHead.appendChild(calcTHeadTR);
+        calcTable.appendChild(calcTHead);
 
-        const gpaCalcTBody = document.createElement('tbody');
-        gpaCalcTBody.id = 'gpa-calculator-table-body';
-        Drupal.arcGPACalculator.addCalculatorRows(6, gpaCalcTBody);
-        gpaCalcTable.appendChild(gpaCalcTBody);
-        gpaCalcForm.appendChild(gpaCalcTable);
+        const calcTBody = document.createElement('tbody');
+        calcTBody.id = 'gpa-calculator-table-body';
+        Drupal.arcGPACalculator.addCalculatorRows(6, calcTBody);
+        calcTable.appendChild(calcTBody);
+        calcForm.appendChild(calcTable);
 
         const calcCurrentTermGPARow = document.createElement('div');
         calcCurrentTermGPARow.className = 'form-group row mx-0';
         calcCurrentTermGPARow.innerHTML =
-          "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto' size='8' id='currentTermGPA' readonly=''>";
-        gpaCalcForm.appendChild(calcCurrentTermGPARow);
+          "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='currentTermGPA' readonly=''>";
+        calcForm.appendChild(calcCurrentTermGPARow);
 
         const calcPreviousInputRow = document.createElement('div');
         calcPreviousInputRow.className = 'form-row';
 
-        const gpaCalcPrevGPA = document.createElement('div');
-        gpaCalcPrevGPA.className = 'form-group col-12 col-md-4';
-        gpaCalcPrevGPA.innerHTML =
+        const calcPrevGPA = document.createElement('div');
+        calcPrevGPA.className = 'form-group col-12 col-md-4';
+        calcPrevGPA.innerHTML =
           "<label for='previousGPA'>Previous Cumulative GPA</label><input type='text' class='form-control' id='previousGPA' pattern='^\\d*(\\.\\d{0,2})?$' aria-describedby='previousGPAHelp'><small id='previousGPAHelp' class='form-text text-muted'>Current GPA</small>";
-        calcPreviousInputRow.appendChild(gpaCalcPrevGPA);
+        calcPreviousInputRow.appendChild(calcPrevGPA);
 
-        const gpaCalcPrevCredit = document.createElement('div');
-        gpaCalcPrevCredit.className = 'form-group col-12 col-md-4';
-        gpaCalcPrevCredit.innerHTML =
-          "<label for='previousCredit'>Previous Cumulative Credits Earned</label><input type='text' class='form-control' id='previousCredit' pattern='^\\d*$' aria-describedby='previousCreditHelp'><small id='previousCreditHelp' class='form-text text-muted'>Your total graded units (credit hours)</small>";
-        calcPreviousInputRow.appendChild(gpaCalcPrevCredit);
+        const calcPrevCredit = document.createElement('div');
+        calcPrevCredit.className = 'form-group col-12 col-md-4';
+        calcPrevCredit.innerHTML =
+          "<label for='previousCredit'>Previous Cumulative Units Earned</label><input type='text' class='form-control' id='previousCredit' pattern='^\\d*$' aria-describedby='previousCreditHelp'><small id='previousCreditHelp' class='form-text text-muted'>Your total graded units (credit hours)</small>";
+        calcPreviousInputRow.appendChild(calcPrevCredit);
 
-        gpaCalcForm.appendChild(calcPreviousInputRow);
+        calcForm.appendChild(calcPreviousInputRow);
 
         const calcOverallGPARow = document.createElement('div');
         calcOverallGPARow.className = 'form-group row mx-0';
         calcOverallGPARow.innerHTML =
-          "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>Overall GPA:</label><input type='text' class='form-control w-auto' size='8' id='overallGPA' readonly=''>";
-        gpaCalcForm.appendChild(calcOverallGPARow);
+          "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' readonly=''>";
+        calcForm.appendChild(calcOverallGPARow);
 
         const calcButton = document.createElement('button');
         calcButton.className = 'btn btn-red mb-3';
@@ -184,18 +185,18 @@
         calcButton.addEventListener('click', () => {
           Drupal.arcGPACalculator.calculate();
         });
-        calcButton.title = 'Calculate ';
+        calcButton.title = 'Calculate GPA value(s)';
         calcButton.innerText = 'Calculate';
-        gpaCalcForm.appendChild(calcButton);
+        calcForm.appendChild(calcButton);
 
-        frag.appendChild(gpaCalcForm);
+        frag.appendChild(calcForm);
 
         calcElement.appendChild(frag);
 
         const prevGPA = document.getElementById('previousGPA');
         prevGPA.addEventListener('input', () => {
           if (prevGPA.validity.patternMismatch) {
-            prevGPA.setCustomValidity('Enter a number value for your GPA.');
+            prevGPA.setCustomValidity('Enter a number for your GPA.');
           } else {
             prevGPA.setCustomValidity('');
           }
@@ -204,7 +205,9 @@
         const prevCredit = document.getElementById('previousCredit');
         prevCredit.addEventListener('input', () => {
           if (prevCredit.validity.patternMismatch) {
-            prevCredit.setCustomValidity('Enter your number of credit hours.');
+            prevCredit.setCustomValidity(
+              'Enter your cumulative units of credit.',
+            );
           } else {
             prevCredit.setCustomValidity('');
           }

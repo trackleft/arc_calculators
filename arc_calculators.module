@@ -14,5 +14,9 @@ function arc_calculators_theme() {
       'template' => 'field--block-content--field-arc-block-header--arc-gpa-calculator-block',
       'base hook' => 'field',
     ],
+    'field__block_content__field_arc_block_header__arc_target_gpa_calculator_block' => [
+      'template' => 'field--block-content--field-arc-block-header--arc-target-gpa-calculator-block',
+      'base hook' => 'field',
+    ],
   ];
 }

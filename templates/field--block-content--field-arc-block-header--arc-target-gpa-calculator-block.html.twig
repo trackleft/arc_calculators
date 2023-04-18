@@ -7,10 +7,10 @@
  */
 #}
 
-{% include 'field--text-with-summary.html.twig' %}
+{% include 'field--text-long.html.twig' %}
 
 {% block content %}
   {{ attach_library('arc_calculators/calculator_styles') }}
   {{ attach_library('arc_calculators/target_gpa_calculator_js') }}
-  <div id='target-gpa-calculator'></div>
+  <div id='target-gpa-calculator' class='col-12 col-xl-10 col-xl-offset-1 px-0 mb-4'></div>
 {% endblock %}
