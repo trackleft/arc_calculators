@@ -4,7 +4,7 @@
 * https://www.drupal.org/node/2815083
 * @preserve
 **/
-(function ($, Drupal, document, once) {
+(function (Drupal, document, once) {
   Drupal.arcTargetGPACalculator = Drupal.arcTargetGPACalculator || {};
   function updateUnitsNeededLabel(gradeLetter) {
     document.getElementById('unitsNeededLabel').innerText = "Units of '".concat(gradeLetter, "' needed to achieve target GPA:");
@@ -96,7 +96,7 @@
         calcGoalRow.appendChild(calcButtonDiv);
         var calcUnitsNeeded = document.createElement('div');
         calcUnitsNeeded.className = 'form-group col-12 col-md-3 text-center';
-        calcUnitsNeeded.innerHTML = "<label id='unitsNeededLabel' for='unitsNeeded'></label><input type='text' class='form-control border-top-0 border-left-0 border-right-0 bg-transparent text-center' id='unitsNeeded' readonly=''>";
+        calcUnitsNeeded.innerHTML = "<label id='unitsNeededLabel' for='unitsNeeded'></label><input type='text' class='form-control border-top-0 border-left-0 border-right-0 bg-transparent text-center' id='unitsNeeded' disabled>";
         calcGoalRow.appendChild(calcUnitsNeeded);
         calcForm.appendChild(calcGoalRow);
         frag.appendChild(calcForm);
@@ -129,4 +129,4 @@
       });
     }
   };
-})(jQuery, Drupal, this.document, once);
+})(Drupal, this.document, once);

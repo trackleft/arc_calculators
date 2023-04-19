@@ -4,7 +4,7 @@
 * https://www.drupal.org/node/2815083
 * @preserve
 **/
-(function ($, Drupal, document, once) {
+(function (Drupal, document, once) {
   Drupal.arcGPACalculator = Drupal.arcGPACalculator || {};
   Drupal.arcGPACalculator.addCalculatorRows = function (numberOfRowsToAdd) {
     var calcTableBodyElement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
@@ -100,7 +100,7 @@
         calcForm.appendChild(calcTable);
         var calcCurrentTermGPARow = document.createElement('div');
         calcCurrentTermGPARow.className = 'form-group row mx-0';
-        calcCurrentTermGPARow.innerHTML = "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='currentTermGPA' readonly=''>";
+        calcCurrentTermGPARow.innerHTML = "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='currentTermGPA' disabled>";
         calcForm.appendChild(calcCurrentTermGPARow);
         var calcPreviousInputRow = document.createElement('div');
         calcPreviousInputRow.className = 'form-row';
@@ -115,7 +115,7 @@
         calcForm.appendChild(calcPreviousInputRow);
         var calcOverallGPARow = document.createElement('div');
         calcOverallGPARow.className = 'form-group row mx-0 mb-4';
-        calcOverallGPARow.innerHTML = "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' readonly=''>";
+        calcOverallGPARow.innerHTML = "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' disabled>";
         calcForm.appendChild(calcOverallGPARow);
         var calcButton = document.createElement('button');
         calcButton.className = 'btn btn-red mb-3';
@@ -147,4 +147,4 @@
       });
     }
   };
-})(jQuery, Drupal, this.document, once);
+})(Drupal, this.document, once);

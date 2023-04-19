@@ -1,4 +1,4 @@
-(($, Drupal, document, once) => {
+((Drupal, document, once) => {
   Drupal.arcGPACalculator = Drupal.arcGPACalculator || {};
 
   /**
@@ -153,7 +153,7 @@
         const calcCurrentTermGPARow = document.createElement('div');
         calcCurrentTermGPARow.className = 'form-group row mx-0';
         calcCurrentTermGPARow.innerHTML =
-          "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='currentTermGPA' readonly=''>";
+          "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='currentTermGPA' disabled>";
         calcForm.appendChild(calcCurrentTermGPARow);
 
         const calcPreviousInputRow = document.createElement('div');
@@ -176,7 +176,7 @@
         const calcOverallGPARow = document.createElement('div');
         calcOverallGPARow.className = 'form-group row mx-0 mb-4';
         calcOverallGPARow.innerHTML =
-          "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' readonly=''>";
+          "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' disabled>";
         calcForm.appendChild(calcOverallGPARow);
 
         const calcButton = document.createElement('button');
@@ -215,4 +215,4 @@
       });
     },
   };
-})(jQuery, Drupal, this.document, once);
+})(Drupal, this.document, once);

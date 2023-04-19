@@ -1,4 +1,4 @@
-(($, Drupal, document, once) => {
+((Drupal, document, once) => {
   Drupal.arcTargetGPACalculator = Drupal.arcTargetGPACalculator || {};
 
   function updateUnitsNeededLabel(gradeLetter) {
@@ -138,7 +138,7 @@
         const calcUnitsNeeded = document.createElement('div');
         calcUnitsNeeded.className = 'form-group col-12 col-md-3 text-center';
         calcUnitsNeeded.innerHTML =
-          "<label id='unitsNeededLabel' for='unitsNeeded'></label><input type='text' class='form-control border-top-0 border-left-0 border-right-0 bg-transparent text-center' id='unitsNeeded' readonly=''>";
+          "<label id='unitsNeededLabel' for='unitsNeeded'></label><input type='text' class='form-control border-top-0 border-left-0 border-right-0 bg-transparent text-center' id='unitsNeeded' disabled>";
         calcGoalRow.appendChild(calcUnitsNeeded);
 
         calcForm.appendChild(calcGoalRow);
@@ -178,4 +178,4 @@
       });
     },
   };
-})(jQuery, Drupal, this.document, once);
+})(Drupal, this.document, once);

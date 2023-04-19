@@ -4,7 +4,6 @@ gpa_calculator_js:
     js/arc-calc-gpa.js: {}
   dependencies:
     - core/drupal
-    - core/jquery
     - core/once
 
 target_gpa_calculator_js:
@@ -13,5 +12,4 @@ target_gpa_calculator_js:
     js/arc-calc-target-gpa.js: {}
   dependencies:
     - core/drupal
-    - core/jquery
     - core/once
