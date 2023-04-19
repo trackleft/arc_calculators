@@ -80,7 +80,7 @@
   };
 
   /**
-   * Attaches behavior for GPA calculator.
+   * Attaches behavior for Target GPA calculator.
    */
   Drupal.behaviors.arcTargetGPACalculator = {
     attach(context) {

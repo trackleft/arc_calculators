@@ -69,6 +69,10 @@
       document.getElementById('overallGPA').value = gpaResult;
     }
   };
+  Drupal.arcGPACalculator.clearCustomValidity = function (event) {
+    event.target.setCustomValidity('');
+    event.target.removeListener('change', Drupal.arcGPACalculator.clearCustomValidity);
+  };
   Drupal.behaviors.arcGPACalculator = {
     attach: function attach(context) {
       once('gpa-calculator', document.getElementById('gpa-calculator'), context).forEach(function (calcElement) {
@@ -100,13 +104,13 @@
         calcForm.appendChild(calcTable);
         var calcCurrentTermGPARow = document.createElement('div');
         calcCurrentTermGPARow.className = 'form-group row mx-0';
-        calcCurrentTermGPARow.innerHTML = "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent' size='8' id='currentTermGPA' readonly=''>";
+        calcCurrentTermGPARow.innerHTML = "<label for='currentTermGPA' class='col-form-label pr-3 font-weight-bold'>Current Term GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='currentTermGPA' readonly=''>";
         calcForm.appendChild(calcCurrentTermGPARow);
         var calcPreviousInputRow = document.createElement('div');
         calcPreviousInputRow.className = 'form-row';
         var calcPrevGPA = document.createElement('div');
         calcPrevGPA.className = 'form-group col-12 col-md-4';
-        calcPrevGPA.innerHTML = "<label for='previousGPA'>Previous Cumulative GPA</label><input type='text' class='form-control' id='previousGPA' pattern='^\\d*(\\.\\d{0,2})?$' aria-describedby='previousGPAHelp'><small id='previousGPAHelp' class='form-text text-muted'>Current GPA</small>";
+        calcPrevGPA.innerHTML = "<label for='previousGPA'>Previous Cumulative GPA</label><input type='text' class='form-control' id='previousGPA' pattern='^[0-3](\\.[0-9]{1,2})?$|^4(\\.[0]{1,2})?$' aria-describedby='previousGPAHelp'><small id='previousGPAHelp' class='form-text text-muted'>Current GPA</small>";
         calcPreviousInputRow.appendChild(calcPrevGPA);
         var calcPrevCredit = document.createElement('div');
         calcPrevCredit.className = 'form-group col-12 col-md-4';
@@ -115,7 +119,7 @@
         calcForm.appendChild(calcPreviousInputRow);
         var calcOverallGPARow = document.createElement('div');
         calcOverallGPARow.className = 'form-group row mx-0';
-        calcOverallGPARow.innerHTML = "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent' size='8' id='overallGPA' readonly=''>";
+        calcOverallGPARow.innerHTML = "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' readonly=''>";
         calcForm.appendChild(calcOverallGPARow);
         var calcButton = document.createElement('button');
         calcButton.className = 'btn btn-red mb-3';
@@ -131,7 +135,8 @@
         var prevGPA = document.getElementById('previousGPA');
         prevGPA.addEventListener('input', function () {
           if (prevGPA.validity.patternMismatch) {
-            prevGPA.setCustomValidity('Enter a number for your GPA.');
+            prevGPA.setCustomValidity('Enter a valid cumulative GPA.');
+            prevGPA.addEventListener('change', Drupal.arcGPACalculator.clearCustomValidity);
           } else {
             prevGPA.setCustomValidity('');
           }
@@ -140,6 +145,7 @@
         prevCredit.addEventListener('input', function () {
           if (prevCredit.validity.patternMismatch) {
             prevCredit.setCustomValidity('Enter your cumulative units of credit.');
+            prevCredit.addEventListener('change', Drupal.arcGPACalculator.clearCustomValidity);
           } else {
             prevCredit.setCustomValidity('');
           }

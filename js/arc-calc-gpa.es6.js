@@ -162,7 +162,7 @@
         const calcPrevGPA = document.createElement('div');
         calcPrevGPA.className = 'form-group col-12 col-md-4';
         calcPrevGPA.innerHTML =
-          "<label for='previousGPA'>Previous Cumulative GPA</label><input type='text' class='form-control' id='previousGPA' pattern='^\\d*(\\.\\d{0,2})?$' aria-describedby='previousGPAHelp'><small id='previousGPAHelp' class='form-text text-muted'>Current GPA</small>";
+          "<label for='previousGPA'>Previous Cumulative GPA</label><input type='text' class='form-control' id='previousGPA' pattern='^[0-3](\\.[0-9]{1,2})?$|^4(\\.[0]{1,2})?$' aria-describedby='previousGPAHelp'><small id='previousGPAHelp' class='form-text text-muted'>Current GPA</small>";
         calcPreviousInputRow.appendChild(calcPrevGPA);
 
         const calcPrevCredit = document.createElement('div');
@@ -196,7 +196,7 @@
         const prevGPA = document.getElementById('previousGPA');
         prevGPA.addEventListener('input', () => {
           if (prevGPA.validity.patternMismatch) {
-            prevGPA.setCustomValidity('Enter a number for your GPA.');
+            prevGPA.setCustomValidity('Enter a valid cumulative GPA.');
           } else {
             prevGPA.setCustomValidity('');
           }
