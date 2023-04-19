@@ -1,11 +1,3 @@
-calculator_styles:
-  version: 1.x
-  css:
-    theme:
-      css/arc-calc.css: {}
-  dependencies:
-    - az_barrio/arizona-bootstrap
-
 gpa_calculator_js:
   version: 1.x
   js:

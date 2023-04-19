@@ -69,10 +69,6 @@
       document.getElementById('overallGPA').value = gpaResult;
     }
   };
-  Drupal.arcGPACalculator.clearCustomValidity = function (event) {
-    event.target.setCustomValidity('');
-    event.target.removeListener('change', Drupal.arcGPACalculator.clearCustomValidity);
-  };
   Drupal.behaviors.arcGPACalculator = {
     attach: function attach(context) {
       once('gpa-calculator', document.getElementById('gpa-calculator'), context).forEach(function (calcElement) {
@@ -136,7 +132,6 @@
         prevGPA.addEventListener('input', function () {
           if (prevGPA.validity.patternMismatch) {
             prevGPA.setCustomValidity('Enter a valid cumulative GPA.');
-            prevGPA.addEventListener('change', Drupal.arcGPACalculator.clearCustomValidity);
           } else {
             prevGPA.setCustomValidity('');
           }
@@ -145,7 +140,6 @@
         prevCredit.addEventListener('input', function () {
           if (prevCredit.validity.patternMismatch) {
             prevCredit.setCustomValidity('Enter your cumulative units of credit.');
-            prevCredit.addEventListener('change', Drupal.arcGPACalculator.clearCustomValidity);
           } else {
             prevCredit.setCustomValidity('');
           }
