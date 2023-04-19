@@ -121,7 +121,8 @@
         calcGoalRow.appendChild(calcCumulativeUnits);
 
         const calcButtonDiv = document.createElement('div');
-        calcButtonDiv.className = 'form-group col-12 col-md-3 mb-4 mb-md-3';
+        calcButtonDiv.className =
+          'form-group col-12 col-md-3 mt-2 mb-4 mb-md-3';
         const calcButton = document.createElement('button');
         calcButton.className = 'btn btn-red w-100';
         calcButton.type = 'submit';

@@ -83,7 +83,7 @@
         calcCumulativeUnits.innerHTML = "<label for='cumulativeUnits'>Cumulative units earned</label><div class='mx-6 mx-md-0'><input type='text' class='form-control' id='cumulativeUnits' pattern='^\\d*$'></div>";
         calcGoalRow.appendChild(calcCumulativeUnits);
         var calcButtonDiv = document.createElement('div');
-        calcButtonDiv.className = 'form-group col-12 col-md-3 mb-4 mb-md-3';
+        calcButtonDiv.className = 'form-group col-12 col-md-3 mt-2 mb-4 mb-md-3';
         var calcButton = document.createElement('button');
         calcButton.className = 'btn btn-red w-100';
         calcButton.type = 'submit';

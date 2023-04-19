@@ -29,16 +29,16 @@
       newTDNum.innerText = i + 1;
       const newTDCourse = document.createElement('td');
       newTDCourse.innerHTML =
-        "<input type='text' class='course-field w-100' name='course'>";
+        "<input type='text' class='course-field w-100' name='course' aria-label='Course Name'>";
       newTDCourse.className = 'pr-2 pr-md-5';
 
       const newTDGrade = document.createElement('td');
       newTDGrade.innerHTML =
-        "<select class='grade-field p-1' name='grade'><option value=''></option><option value='4'>A</option><option value='3'>B</option><option value='2'>C</option><option value='1'>D</option><option value='0'>E</option></select>";
+        "<select class='grade-field p-1' name='grade' aria-label='Course Grade'><option value=''></option><option value='4'>A</option><option value='3'>B</option><option value='2'>C</option><option value='1'>D</option><option value='0'>E</option></select>";
 
       const newTDCredit = document.createElement('td');
       newTDCredit.innerHTML =
-        "<input type='number' min='0' max='100' class='credit-field text-center' name='credit'>";
+        "<input type='number' min='0' max='100' class='credit-field text-center' name='credit' aria-label='Units of Credit'>";
 
       newRow.appendChild(newTDNum);
       newRow.appendChild(newTDCourse);
@@ -174,7 +174,7 @@
         calcForm.appendChild(calcPreviousInputRow);
 
         const calcOverallGPARow = document.createElement('div');
-        calcOverallGPARow.className = 'form-group row mx-0';
+        calcOverallGPARow.className = 'form-group row mx-0 mb-4';
         calcOverallGPARow.innerHTML =
           "<label for='overallGPA' class='col-form-label pr-3 font-weight-bold'>New Overall GPA:</label><input type='text' class='form-control w-auto border-top-0 border-left-0 border-right-0 bg-transparent text-center' size='6' id='overallGPA' readonly=''>";
         calcForm.appendChild(calcOverallGPARow);
