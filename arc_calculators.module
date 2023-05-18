@@ -5,18 +5,78 @@
  * Contains arc_calculators.module.
  */
 
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\Element;
+
 /**
  * Implements hook_theme().
  */
 function arc_calculators_theme() {
   return [
-    'field__block_content__field_arc_block_header__arc_gpa_calculator_block' => [
-      'template' => 'field--block-content--field-arc-block-header--arc-gpa-calculator-block',
-      'base hook' => 'field',
+    'block_content__type__arc_gpa_calculator_block' => [
+      'render element' => 'elements',
     ],
-    'field__block_content__field_arc_block_header__arc_target_gpa_calculator_block' => [
-      'template' => 'field--block-content--field-arc-block-header--arc-target-gpa-calculator-block',
-      'base hook' => 'field',
+    'block_content__type__arc_target_gpa_calculator_block' => [
+      'render element' => 'elements',
     ],
   ];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view_alter() for block_content.
+ */
+function arc_calculators_block_content_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  $bundle = $entity->bundle();
+
+  if ($bundle) {
+    if ($bundle === 'arc_gpa_calculator_block') {
+      $build['#theme'] = 'block_content__type__arc_gpa_calculator_block';
+    }
+    elseif ($bundle === 'arc_target_gpa_calculator_block') {
+      $build['#theme'] = 'block_content__type__arc_target_gpa_calculator_block';
+    }
+  }
+}
+
+/**
+ * Helper preprocess function for ARC calculator block content templates.
+ */
+function arc_calculators_preprocess_calculator_template(&$variables) {
+  $block_content = $variables['elements']['#block_content'];
+
+  $variables['id'] = $block_content->id();
+  $variables['bundle'] = $block_content->bundle();
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+
+  $content = [];
+  foreach (Element::children($variables['elements']) as $key) {
+    $content[$key] = $variables['elements'][$key];
+  }
+  $variables['content'] = $content;
+}
+
+/**
+ * Preprocess function for GPA Calculator block content template.
+ */
+function template_preprocess_block_content__type__arc_gpa_calculator_block(&$variables) {
+  arc_calculators_preprocess_calculator_template($variables);
+}
+
+/**
+ * Preprocess function for Target GPA Calculator block content template.
+ */
+function template_preprocess_block_content__type__arc_target_gpa_calculator_block(&$variables) {
+  arc_calculators_preprocess_calculator_template($variables);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function arc_calculators_theme_suggestions_block_content(array $variables) {
+
+  $suggestions = [];
+  $suggestions[] = 'block_content__type__arc_gpa_calculator_block';
+  $suggestions[] = 'block_content__type__arc_target_gpa_calculator_block';
+  return $suggestions;
 }

@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override to display a Target GPA Calculator custom block.
+ *
+ * @see template_preprocess_block_content__type__arc_target_gpa_calculator_block()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'block-content',
+    'block-content--type-' ~ bundle|clean_class,
+    'block-content--' ~ id,
+    'block-content--view-mode-' ~ view_mode|clean_class
+  ]
+%}
+
+{% block content %}
+  {{ attach_library('arc_calculators/target_gpa_calculator_js') }}
+  <div{{attributes.addClass(classes)}}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    {{ content }}
+  </div>
+  <div id='target-gpa-calculator' class='col-12 col-xl-10 col-xl-offset-1 px-0 mb-4'></div>
+{% endblock %}
