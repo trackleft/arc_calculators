@@ -4,4 +4,4 @@ dependencies: {  }
 id: arc_gpa_calculator_block
 label: 'GPA Calculator Block'
 revision: 1
-description: 'Add the GPA Calculator to a page.'
+description: 'Create an instance of the <em>GPA Calculator</em> that can be placed anywhere on the site.'
