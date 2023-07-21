@@ -3,6 +3,6 @@
   "description": "Composer project for ARC Calculators module.",
   "type": "drupal-custom-module",
   "require": {
-      "drupal/core": "^9"
+      "drupal/core": "^9 || ^10"
   }
 }
